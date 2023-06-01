@@ -119,6 +119,12 @@
 
     mounted() {
       this.getArticles()
+      window.onload = function () {
+        $(function () {
+          if (window.location.protocol === 'https:')
+            window.location.protocol = 'http'
+        })
+      }
     },
   }
 </script>
