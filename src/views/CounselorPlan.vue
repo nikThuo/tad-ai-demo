@@ -1,0 +1,709 @@
+<template>
+  <div class="home">
+    <TitleSection
+      highlight="Powered by TadHealth AI"
+      title="Active Shooter Event Alert"
+      subtitle="As you may already be aware, there has been an active shooter incident 5 miles from our school. The safety and mental well-being of our students is our primary concern in these challenging circumstances. We anticipate that this incident may lead to an increase in demand for our counseling services. Please be prepared for a potential influx of appointments and remember to provide sensitive, patient, and compassionate care to all students who reach out."
+    />
+    <main>
+      <div>
+        <div class="main__header">
+          <span class="pulse-container">
+            <span class="pulse"></span>
+          </span>
+
+          <span class="school-pulse-container">
+            <span class="school-pulse"></span>
+          </span>
+          <img
+            :src="headerImage"
+            alt="Header Image"
+            class="plan__header-image"
+          />
+        </div>
+      </div>
+
+      <p class="action-plan__message">
+        This is a challenging time for all of us, but by working together and
+        supporting one another, we will make it through. Remember, we are a team
+        and we're here to support not only our students but also each other.
+        <br /><br />
+        Below you will find useful resources that will help you take actions and
+        assist the students during this difficult time. Here, you'll be able to
+        view news articles about the event, accept pending student appointments,
+        access recommended resources, and receive updates related to the
+        incident.
+      </p>
+
+      <h3 class="section__title">Event Summary</h3>
+
+      <div class="news__container">
+        <div class="card">
+          <p class="plan__location">
+            <i class="bx icon bx-equalizer ai__icon"></i> AI Event Summary
+          </p>
+          <p class="ai__event-summary">
+            News reports indicate an active shooter incident approximately five
+            miles from Harrison High School. Law enforcement agencies are
+            currently at the scene responding to the situation. Immediate safety
+            measures, including local lockdown procedures, have been implemented
+            in nearby establishments. At this time, residents in the vicinity
+            are being urged to stay indoors. It is advised for Harrison High
+            School to enact its crisis response plan in light of these reports.
+            Please stay vigilant and await further updates from law enforcement
+            and emergency services.
+          </p>
+        </div>
+
+        <h3 class="section__title">News Articles</h3>
+        <div class="card">
+          <div class="news">
+            <p class="plan__location">
+              <span><i class="bx icon bx-star"></i></span> Active Shooter
+              Incident Unfolds Near Local High School
+            </p>
+            <p class="news__text">
+              An active shooter situation has reportedly unfolded about five
+              miles from Harrison High School. Local law enforcement agencies
+              are currently at the scene.
+            </p>
+            <p class="plan__location-tag news__source">
+              ABC News
+              <span class="news__time"><strong>43 minutes ago</strong></span>
+            </p>
+          </div>
+          <div class="news">
+            <p class="plan__location">
+              Emergency Services Respond to Shooting Near Harrison High School
+            </p>
+            <p class="news__text">
+              A shooting incident is currently in progress just five miles from
+              Harrison High School. Emergency services have rushed to the scene
+              and have begun implementing lockdown procedures for nearby
+              establishments.
+            </p>
+            <p class="plan__location-tag news__source">
+              CNN News
+              <span class="news__time"><strong>2 hours ago</strong></span>
+            </p>
+          </div>
+          <div class="news">
+            <p class="plan__location">
+              Shooting in Progress: Harrison High School Area on High Alert
+            </p>
+            <p class="news__text">
+              An active shooter situation is underway in the vicinity of
+              Harrison High School. Police have cordoned off the area and are
+              urging residents to stay inside and remain vigilant.
+            </p>
+            <p class="plan__location-tag news__source">
+              CNBC News
+              <span class="news__time"><strong>5 hours ago</strong></span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section__title">Appointment Requests</h3>
+      <div class="appointment-section">
+        <div class="appointment-table">
+          <div class="filter">
+            <label for="priority-filter" class="priority-filter"
+              >Filter by Priority:</label
+            >
+            <select
+              id="priority-filter"
+              v-model="filterPriority"
+              @change="filterAppointments"
+              class="priority-filter"
+            >
+              <option value="all">All</option>
+              <option value="high risk">high risk</option>
+              <option value="intermediate risk">intermediate risk</option>
+              <option value="low risk">low risk</option>
+            </select>
+          </div>
+          <div
+            class="appointment"
+            v-for="appointment in filteredAppointments"
+            :key="appointment.name"
+          >
+            <span
+              class="priority-dot"
+              :class="appointment.priority.split('').join('')"
+            ></span>
+            <h4 class="appointment-name">
+              {{ appointment.name }}
+              <a
+                href="#"
+                class="view-submission"
+                @click.prevent="openModal(appointment)"
+              >
+                <i class="bx bxs-food-menu"></i> View ACES Submission
+              </a>
+            </h4>
+            <!-- <p class="appointment-status">{{ appointment.status }}</p> -->
+
+            <button
+              class="approve-button"
+              @click="approveAppointment(appointment)"
+            >
+              Approve
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section__title">Recommended Resources</h3>
+      <div class="resource-list">
+        <div class="resource">
+          <img
+            class="resource__image"
+            src="https://images.pexels.com/photos/6003572/pexels-photo-6003572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt=""
+          />
+          <p class="plan__location">Best Practices in Crisis Counseling</p>
+          <p class="news__text">
+            This comprehensive article provides insights into the most effective
+            strategies and techniques used in crisis counseling. Drawing from a
+            wide range of scholarly research and case studies, it provides
+            counselors with practical tips and best practices for responding to
+            crisis situations.
+          </p>
+          <p class="plan__location-tag">
+            by
+            <span class="news__time"><strong> Dr. Samantha Reed</strong></span>
+          </p>
+        </div>
+        <div class="resource">
+          <img
+            src="https://images.pexels.com/photos/52608/pexels-photo-52608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt=""
+            class="resource__image"
+          />
+          <p class="plan__location">
+            Trauma-Informed Care: A Professional Guide
+          </p>
+          <p class="news__text">
+            This instructive video is a training guide for professionals in
+            trauma-informed care. It underscores the impact of trauma and paths
+            for recovery, helps identify signs of trauma in clients, and
+            illustrates how to integrate this knowledge into everyday practice.
+          </p>
+          <p class="plan__location-tag">
+            by
+            <span class="news__time"><strong> Mr. Daniel Martin</strong></span>
+          </p>
+        </div>
+        <div class="resource">
+          <img
+            src="https://images.pexels.com/photos/127713/pexels-photo-127713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt=""
+            class="resource__image"
+          />
+          <p class="plan__location">
+            Understanding the Adolescent Brain in Crisis
+          </p>
+          <p class="news__text">
+            This instructive video is a training guide for professionals in
+            trauma-informed care. It underscores the impact of trauma and paths
+            for recovery, helps identify signs of trauma in clients, and
+            illustrates how to integrate this knowledge into everyday practice.
+          </p>
+          <p class="plan__location-tag">
+            by
+            <span class="news__time"><strong>Dr. Albert Ham</strong></span>
+          </p>
+        </div>
+      </div>
+      <div class="modal" v-if="isModalOpen">
+        <div class="modal-content">
+          <h2>ACES Submission</h2>
+          <p>Priority: {{ modalAppointment.priority }}</p>
+          <button @click="isModalOpen = false">Close</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</template>
+
+<script>
+  import TitleSection from '@/components/TitleSection.vue'
+  export default {
+    name: 'CounselorPlan',
+    data() {
+      return {
+        isModalOpen: false,
+        modalAppointment: null,
+        appointments: [
+          { name: 'John Doe', status: 'Pending', priority: 'high risk' },
+          {
+            name: 'Jane Smith',
+            status: 'Pending',
+            priority: 'intermediate risk',
+          },
+          { name: 'James Johnson', status: 'Pending', priority: 'low risk' },
+          { name: 'Emily Watson', status: 'Pending', priority: 'high risk' },
+          {
+            name: 'Daniel Davis',
+            status: 'Pending',
+            priority: 'intermediate risk',
+          },
+          { name: 'Jessica Thompson', status: 'Pending', priority: 'low risk' },
+          { name: 'Andrew Wilson', status: 'Pending', priority: 'high risk' },
+        ],
+        filterPriority: 'all',
+        filteredAppointments: [],
+      }
+    },
+    mounted() {
+      window.scrollTo(0, 0)
+    },
+    methods: {
+      filterAppointments() {
+        if (this.filterPriority === 'all') {
+          this.filteredAppointments = this.appointments
+        } else {
+          this.filteredAppointments = this.appointments.filter(
+            appointment => appointment.priority === this.filterPriority,
+          )
+        }
+      },
+      openModal(appointment) {
+        this.isModalOpen = true
+        this.modalAppointment = appointment
+      },
+      approveAppointment(appointment) {
+        appointment.status = 'Approved'
+      },
+    },
+    created() {
+      this.filterAppointments()
+    },
+    components: {
+      TitleSection,
+    },
+    props: {
+      headerImage: {
+        type: String,
+        default: '/map.png',
+      },
+      planTitle: {
+        type: String,
+        default: '',
+      },
+      planObjective: {
+        type: String,
+        default: '',
+      },
+      staffPlanTitle: {
+        type: String,
+        default: '',
+      },
+      staffActionPlan: {
+        type: Array,
+        default: () => [],
+      },
+      counselorPlanTitle: {
+        type: String,
+        default: '',
+      },
+      counselorActionPlan: {
+        type: Array,
+        default: () => [],
+      },
+      studentPlanTitle: {
+        type: String,
+        default: '',
+      },
+      studentActionPlan: {
+        type: Array,
+        default: () => [],
+      },
+    },
+  }
+</script>
+
+<style scoped>
+  .filter {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 20%;
+    border-radius: 5px;
+  }
+
+  .btn {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+
+  .appointment-section {
+    margin-top: 2rem;
+  }
+  .appointment-table {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 1rem 0rem;
+  }
+  .appointment-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+    display: flex;
+    flex-direction: column;
+  }
+  .appointment {
+    background-color: #fff;
+    padding: 0rem 2rem;
+    padding-bottom: 1rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+  }
+  .priority-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    position: relative;
+    bottom: 8px;
+  }
+  .priority-dot.high {
+    background-color: #ff6b6b;
+  }
+  .priority-dot.intermediate {
+    background-color: #f89e5d;
+  }
+  .priority-dot.low {
+    background-color: #4acdc4;
+  }
+  .appointment-name {
+    flex-grow: 1;
+  }
+
+  .priority-filter {
+    color: var(--dark-text-color) !important;
+    font-weight: 400 !important;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+  }
+  .view-submission {
+    font-size: 0.6rem !important;
+    color: var(--light-text-color);
+  }
+  .appointment-status {
+    margin-right: 20px;
+  }
+  .approve-button {
+    background-color: #1a535c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .resource__image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  .resource-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+  .resource {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  .section__title {
+    color: var(--dark-text-color);
+    margin: 2rem 0rem;
+  }
+  .action-plan__message {
+    font-size: 1rem;
+    margin: 2rem 0rem;
+    margin-top: 2rem;
+    font-weight: 400;
+    color: var(--dark-text-color);
+  }
+  .pulse-container::before {
+    content: 'Event Location';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .pulse-container {
+    position: absolute;
+    top: 200px;
+    left: 450px;
+  }
+  .pulse {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #dc3545 !important;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+    animation: pulse 2s infinite;
+  }
+
+  .pulse:hover {
+    animation: none;
+  }
+
+  .main__header {
+    position: relative;
+  }
+
+  @-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 #dc354662 !important;
+    }
+    70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 #dc354662;
+      box-shadow: 0 0 0 0 #dc354662;
+    }
+    70% {
+      -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+
+  .school-pulse-container::before {
+    content: 'Your Location';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .school-pulse-container {
+    position: absolute;
+    top: 70px;
+    left: 600px;
+  }
+  .school-pulse {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4acdc4 !important;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+    animation: pulsee 2s infinite;
+  }
+
+  .school-pulse:hover {
+    animation: none;
+  }
+
+  @-webkit-keyframes pulsee {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 #4acdc452 !important;
+    }
+    70% {
+      -webkit-box-shadow: 0 0 0 10px #4acdc452;
+    }
+    100% {
+      -webkit-box-shadow: 0 0 0 0 #4acdc452;
+    }
+  }
+  @keyframes pulsee {
+    0% {
+      -moz-box-shadow: 0 0 0 0 #4acdc452;
+      box-shadow: 0 0 0 0 #4acdc452;
+    }
+    70% {
+      -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+  .home {
+    padding: 5rem;
+  }
+  @media screen and (max-width: 600px) {
+    .home {
+      padding: 2rem;
+    }
+  }
+  .bx-star {
+    color: #ffc107 !important;
+  }
+  .news__time {
+    color: var(--dark-text-color);
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-size: 0.7rem;
+  }
+  .news__source {
+    color: #ff6b6b !important;
+  }
+  .news {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .news__text {
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+  }
+  .ai__icon {
+    margin-right: 0.5rem;
+    color: var(--highlight-color);
+  }
+  .ai__event-summary {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--light-text-color);
+  }
+  .card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  .news__container {
+  }
+  .plan__location-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .plan__location-tag {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--light-text-color);
+  }
+  .plan__location {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--dark-text-color);
+  }
+  .plan__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .plan__danger-button {
+    margin-left: auto;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  .plan__header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .plan__header-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  .plan__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+  }
+
+  .plan__objective {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--light-text-color);
+  }
+
+ 
+  @media screen and (max-width: 600px) {
+    .resource-list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+</style>
