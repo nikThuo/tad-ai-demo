@@ -2,6 +2,7 @@
   "name": "vue-sidebar-menu-akahon",
   "version": "1.0.2",
   "private": false,
+  "start":"node server.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
