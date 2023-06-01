@@ -106,7 +106,7 @@
           params.event_classification = this.event_classification
         }
         const response = await axios.get(
-          'http://ai.tadhealth.com:8000/articles/',
+          'https://ai.tadhealth.com:8000/articles/',
           { params },
         )
         this.articles = response.data
