@@ -47,6 +47,6 @@
   "homepage": "https://github.com/akahon/vue-sidebar-menu-akahon#readme",
   "engines": {
     "node": "16.16.0",
-    "npm": "6.14.13"
+    "npm": "9.4.0"
   }
 }
