@@ -22,7 +22,7 @@
 
       <i
         class="bx"
-        :class="'bx-menu-alt-right icon-close'"
+        :class="isOpened ? 'bx-menu-alt-right ' : 'bx-menu icon-close'"
         id="btn"
         @click="isOpened = !isOpened"
       />
@@ -258,9 +258,16 @@
         isOpened: false,
       }
     },
+    created() {
+      window.addEventListener('resize', this.checkWindowSize)
+    },
+    destroyed() {
+      window.removeEventListener('resize', this.checkWindowSize)
+    },
     mounted() {
       this.isOpened = this.isMenuOpen
       this.tooltipAttached()
+      this.checkWindowSize()
     },
     computed: {
       cssVars() {
@@ -289,6 +296,13 @@
       },
     },
     methods: {
+      checkWindowSize() {
+        if (window.innerWidth <= 768) {
+          this.isOpened = false
+        } else {
+          this.isOpened = this.isMenuOpen
+        }
+      },
       tooltipAttached() {
         const tooltips = document.querySelectorAll('.tooltip')
         tooltips.forEach(tooltip => {
@@ -688,11 +702,29 @@
     .icon-close {
       display: block !important;
       position: relative;
-      left: 340px;
+      left: 43%;
       padding-bottom: 50px;
       padding-left: 250px !important;
       line-height: 40px !important;
       transition: display 0.3s ease-in-out;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .icon-close {
+      left: 45%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .icon-close {
+      left: 43%;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .icon-close {
+      left: 42%;
     }
   }
 </style>
