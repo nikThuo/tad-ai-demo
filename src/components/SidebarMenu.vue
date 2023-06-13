@@ -7,13 +7,22 @@
         alt="menu-logo"
         class="icon menu-logo"
       />
+
       <i v-else class="bx icon" :class="menuIcon" />
+
       <div class="logo_name">
         {{ menuTitle }}
       </div>
       <i
         class="bx"
         :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
+        id="btn"
+        @click="isOpened = !isOpened"
+      />
+
+      <i
+        class="bx"
+        :class="'bx-menu-alt-right icon-close'"
         id="btn"
         @click="isOpened = !isOpened"
       />
@@ -51,6 +60,7 @@
               <i class="bx" :class="menuItem.icon || 'bx-square-rounded'" />
               <span class="links_name">{{ menuItem.name }}</span>
             </router-link>
+
             <a
               v-else
               @click.stop.prevent="$emit('menuItemClcked', menuItem.link)"
@@ -310,7 +320,10 @@
   /* Google Font Link */
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
   @import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
-  
+
+  .icon-close {
+    display: none;
+  }
 
   * {
     margin: 0;
@@ -643,20 +656,8 @@
     .sidebar li .tooltip {
       display: none;
     }
-
-    
   }
 
-  @media (max-width: 620px) {
-   
-    .sidebar {
-    display: none !important;
-    }
-
-    body {
-      padding-left: 0 !important;
-    }
-  }
   .slide-fade-enter-active {
     transition: all 5s ease;
   }
@@ -667,5 +668,31 @@
   .slide-fade-leave-to {
     transform: translateX(-100%);
     opacity: 0;
+  }
+
+  @media (max-width: 620px) {
+    body {
+      padding-left: 0px !important;
+    }
+    .sidebar {
+      position: absolute;
+      width: 100%;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+      height: 100vh;
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .icon-close {
+      display: block !important;
+      position: relative;
+      left: 340px;
+      padding-bottom: 50px;
+      padding-left: 250px !important;
+      line-height: 40px !important;
+      transition: display 0.3s ease-in-out;
+    }
   }
 </style>

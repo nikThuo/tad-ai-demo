@@ -230,7 +230,7 @@
   }
 </script>
 
-<style scoped>
+<style >
   .article__source {
     font-size: 0.75rem;
     color: var(--light-text-color);
@@ -333,8 +333,60 @@
   }
 
   @media screen and (max-width: 600px) {
+
+
     .home {
       padding: 2rem;
     }
+
+    input {
+      width: 50px;
+    }
+
+    .page__subtitle {
+      font-size: 0.8rem !important;
+    }
+
+    .article__title {
+      font-size: 1rem !important;
+    }
+
+    .badge {
+      font-size: 10px !important;
+    }
+
+    .article__body {
+      font-size: 0.8rem !important;
+    }
+
+    .page__highlight {
+      padding-top: 2rem;
+    }
+
+    label {
+      font-size: 0.8rem !important;
+    }
+
+    .page__title {
+      font-size: 1.3rem !important;
+    }
+
+    .action-plan__message {
+      font-size: 0.8rem !important;
+    }
+
+    .action-plan__resources-title {
+      font-size: 1rem !important;
+    }
+
+    .resource-list__item {
+      font-size: 0.8rem !important;
+    }
+
+    .guide-list__item {
+      font-size: 0.8rem !important;
+    }
+
+
   }
 </style>
