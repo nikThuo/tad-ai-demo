@@ -5,6 +5,8 @@ import ActionPlan from './views/ActionPlan.vue'
 import CrisisManagement from './views/CrisisManagement.vue'
 import CounselorPlan from './views/CounselorPlan.vue'
 import ArticlePage from './views/ArticlePage.vue'
+import SideKick from './views/SideKick.vue'
+import ScheduleMe from './views/ScheduleMe.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +14,12 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: ScheduleMe,
+  },
+  {
+      path: '/side-kick',
+      name: 'side-kick',
+      component: SideKick,
   },
   {
     path: '/action-plan',

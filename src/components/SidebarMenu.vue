@@ -77,7 +77,7 @@
       </div>
 
       <transition name="slide-fade">
-        <div v-if="isOpened" class="profile">
+        <div v-if="isOpened" class="profile bg-teal-900">
           <div class="profile-details">
             <img v-if="profileImg" :src="profileImg" alt="profileImg" />
             <div class="name_job">
@@ -146,28 +146,41 @@
         default: () => [
           {
             link: '/',
-            name: 'Crisis Companion',
+            name: 'Schedule Me',
             tooltip: 'Dashboard',
-            icon: 'bx-map-pin',
+            icon: 'bx-calendar',
           },
           {
-            link: '/crisis-management',
-            name: 'Crisis Management',
-            tooltip: 'Crisis Management Center',
-            icon: 'bx-book-heart',
+            link: '/side-kick',
+            name: 'SideKick',
+            tooltip: 'Dashboard',
+            icon: 'bx-street-view',
           },
-          {
-            link: '/action-plan',
-            name: 'Example Action Plan',
-            tooltip: 'Example Action Plan',
-            icon: 'bx-paper-plane',
-          },
-          {
-            link: '/counselor-plan',
-            name: 'Counselor Plan',
-            tooltip: 'Counselor Plan',
-            icon: 'bx-book-open',
-          },
+
+          // {
+          //   link: '/',
+          //   name: 'Crisis Companion',
+          //   tooltip: 'Dashboard',
+          //   icon: 'bx-map-pin',
+          // },
+          // {
+          //   link: '/crisis-management',
+          //   name: 'Crisis Management',
+          //   tooltip: 'Crisis Management Center',
+          //   icon: 'bx-book-heart',
+          // },
+          // {
+          //   link: '/action-plan',
+          //   name: 'Example Action Plan',
+          //   tooltip: 'Example Action Plan',
+          //   icon: 'bx-paper-plane',
+          // },
+          // {
+          //   link: '/counselor-plan',
+          //   name: 'Counselor Plan',
+          //   tooltip: 'Counselor Plan',
+          //   icon: 'bx-book-open',
+          // },
         ],
       },
 
@@ -566,7 +579,6 @@
     /* left: 0;
     bottom: 0; */
     padding: 10px 14px;
-    background: var(--menu-footer-bg);
     transition: all 0.5s ease;
     overflow: hidden;
   }
