@@ -150,37 +150,37 @@
             tooltip: 'Dashboard',
             icon: 'bx-calendar',
           },
-          {
-            link: '/side-kick',
-            name: 'SideKick',
-            tooltip: 'Dashboard',
-            icon: 'bx-street-view',
-          },
-
           // {
-          //   link: '/',
-          //   name: 'Crisis Companion',
+          //   link: '/side-kick',
+          //   name: 'SideKick',
           //   tooltip: 'Dashboard',
-          //   icon: 'bx-map-pin',
+          //   icon: 'bx-street-view',
           // },
-          // {
-          //   link: '/crisis-management',
-          //   name: 'Crisis Management',
-          //   tooltip: 'Crisis Management Center',
-          //   icon: 'bx-book-heart',
-          // },
-          // {
-          //   link: '/action-plan',
-          //   name: 'Example Action Plan',
-          //   tooltip: 'Example Action Plan',
-          //   icon: 'bx-paper-plane',
-          // },
-          // {
-          //   link: '/counselor-plan',
-          //   name: 'Counselor Plan',
-          //   tooltip: 'Counselor Plan',
-          //   icon: 'bx-book-open',
-          // },
+
+          {
+            link: '/crisis-companion',
+            name: 'Crisis Companion',
+            tooltip: 'Dashboard',
+            icon: 'bx-map-pin',
+          },
+          {
+            link: '/crisis-management',
+            name: 'Crisis Management',
+            tooltip: 'Crisis Management Center',
+            icon: 'bx-book-heart',
+          },
+          {
+            link: '/action-plan',
+            name: 'Example Action Plan',
+            tooltip: 'Example Action Plan',
+            icon: 'bx-paper-plane',
+          },
+          {
+            link: '/counselor-plan',
+            name: 'Counselor Plan',
+            tooltip: 'Counselor Plan',
+            icon: 'bx-book-open',
+          },
         ],
       },
 

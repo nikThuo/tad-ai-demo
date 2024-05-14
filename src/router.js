@@ -16,10 +16,11 @@ const routes = [
     name: 'home',
     component: ScheduleMe,
   },
+
   {
-      path: '/side-kick',
+      path: '/crisis-companion',
       name: 'side-kick',
-      component: SideKick,
+      component: Home,
   },
   {
     path: '/action-plan',
