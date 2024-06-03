@@ -146,6 +146,67 @@
         </div>
       </div>
     </div>
+
+    <h3 class="section__title">Recommended Resources</h3>
+    <div class="resource-list">
+      <div class="resource">
+        <img
+          class="resource__image"
+          src="https://images.pexels.com/photos/6003572/pexels-photo-6003572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt=""
+        />
+        <p class="plan__location">Best Practices in Crisis Counseling</p>
+        <p class="news__text">
+          This comprehensive article provides insights into the most effective
+          strategies and techniques used in crisis counseling. Drawing from a
+          wide range of scholarly research and case studies, it provides
+          counselors with practical tips and best practices for responding to
+          crisis situations.
+        </p>
+        <p class="plan__location-tag">
+          by
+          <span class="news__time"><strong> Dr. Samantha Reed</strong></span>
+        </p>
+      </div>
+      <div class="resource">
+        <img
+          src="https://images.pexels.com/photos/52608/pexels-photo-52608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt=""
+          class="resource__image"
+        />
+        <p class="plan__location">Trauma-Informed Care: A Professional Guide</p>
+        <p class="news__text">
+          This instructive video is a training guide for professionals in
+          trauma-informed care. It underscores the impact of trauma and paths
+          for recovery, helps identify signs of trauma in clients, and
+          illustrates how to integrate this knowledge into everyday practice.
+        </p>
+        <p class="plan__location-tag">
+          by
+          <span class="news__time"><strong> Mr. Daniel Martin</strong></span>
+        </p>
+      </div>
+      <div class="resource">
+        <img
+          src="https://images.pexels.com/photos/127713/pexels-photo-127713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt=""
+          class="resource__image"
+        />
+        <p class="plan__location">
+          Understanding the Adolescent Brain in Crisis
+        </p>
+        <p class="news__text">
+          This instructive video is a training guide for professionals in
+          trauma-informed care. It underscores the impact of trauma and paths
+          for recovery, helps identify signs of trauma in clients, and
+          illustrates how to integrate this knowledge into everyday practice.
+        </p>
+        <p class="plan__location-tag">
+          by
+          <span class="news__time"><strong>Dr. Albert Ham</strong></span>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
