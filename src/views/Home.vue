@@ -6,6 +6,32 @@
       subtitle="Our contextual AI provides resources when they are needed and assists professionals in navigating through controversial, challenging and emerging issues in mental health care."
     />
 
+    <div>
+      <div class="main__header">
+        <span class="pulse-container">
+          <span class="pulse"></span>
+        </span>
+
+        <span class="pulse-container pulse-one">
+          <span class="pulse"></span>
+        </span>
+
+        <span class="pulse-container pulse-two">
+          <span class="pulse"></span>
+        </span>
+
+        <span class="pulse-container pulse-three">
+          <span class="pulse"></span>
+        </span>
+
+        <span class="school-pulse-container">
+          <span class="school-pulse"></span>
+        </span>
+
+        <img :src="headerImage" alt="Header Image" class="plan__header-image" />
+      </div>
+    </div>
+
     <div class="filters">
       <label for="limit">Limit</label>
       <input class="input" type="number" id="limit" v-model="limit" min="1" />
@@ -18,7 +44,11 @@
       </select>
     </div>
     <div class="articles">
-      <div v-for="article in filteredArticles" :key="article.title" class="article">
+      <div
+        v-for="article in filteredArticles"
+        :key="article.title"
+        class="article"
+      >
         <router-link
           :to="{ name: 'article', params: { article: article } }"
           tag="div"
@@ -81,6 +111,12 @@
 
   export default {
     name: 'Home',
+    props: {
+      headerImage: {
+        type: String,
+        default: '/map.png',
+      },
+    },
     data() {
       return {
         limit: 5,
@@ -230,7 +266,7 @@
   }
 </script>
 
-<style >
+<style>
   .article__source {
     font-size: 0.75rem;
     color: var(--light-text-color);
@@ -333,8 +369,6 @@
   }
 
   @media screen and (max-width: 600px) {
-
-
     .home {
       padding: 2rem;
     }
@@ -386,7 +420,404 @@
     .guide-list__item {
       font-size: 0.8rem !important;
     }
+  }
 
+  .filter {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
 
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 20%;
+    border-radius: 5px;
+  }
+
+  .btn {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+
+  .appointment-section {
+    margin-top: 2rem;
+  }
+  .appointment-table {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 1rem 0rem;
+  }
+  .appointment-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+    display: flex;
+    flex-direction: column;
+  }
+  .appointment {
+    background-color: #fff;
+    padding: 0rem 2rem;
+    padding-bottom: 1rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+  }
+  .priority-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    position: relative;
+    bottom: 8px;
+  }
+  .priority-dot.high {
+    background-color: #ff6b6b;
+  }
+  .priority-dot.intermediate {
+    background-color: #f89e5d;
+  }
+  .priority-dot.low {
+    background-color: #4acdc4;
+  }
+  .appointment-name {
+    flex-grow: 1;
+  }
+
+  .priority-filter {
+    color: var(--dark-text-color) !important;
+    font-weight: 400 !important;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+  }
+  .view-submission {
+    font-size: 0.6rem !important;
+    color: var(--light-text-color);
+  }
+  .appointment-status {
+    margin-right: 20px;
+  }
+  .approve-button {
+    background-color: #1a535c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .resource__image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  .resource-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+  }
+  .resource {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  .section__title {
+    color: var(--dark-text-color);
+    margin: 2rem 0rem;
+  }
+  .action-plan__message {
+    font-size: 1rem;
+    margin: 2rem 0rem;
+    margin-top: 2rem;
+    font-weight: 400;
+    color: var(--dark-text-color);
+  }
+  .pulse-container::before {
+    content: 'Event Location';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .pulse-container {
+    position: absolute;
+    top: 200px;
+    left: 450px;
+  }
+  .pulse {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #dc3545 !important;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+    animation: pulse 2s infinite;
+  }
+
+  .2 .pulse:hover {
+    animation: none;
+  }
+
+  .main__header {
+    position: relative;
+  }
+
+  @-webkit-keyframes pulse {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 #dc354662 !important;
+    }
+    70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+  @keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 #dc354662;
+      box-shadow: 0 0 0 0 #dc354662;
+    }
+    70% {
+      -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+
+  .school-pulse-container::before {
+    content: 'Your Location';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .school-pulse-container {
+    position: absolute;
+    top: 70px;
+    left: 600px;
+  }
+  .school-pulse {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #4acdc4 !important;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(204, 169, 44, 0.4);
+    animation: pulsee 2s infinite;
+  }
+
+  .school-pulse:hover {
+    animation: none;
+  }
+
+  @-webkit-keyframes pulsee {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 #4acdc452 !important;
+    }
+    70% {
+      -webkit-box-shadow: 0 0 0 10px #4acdc452;
+    }
+    100% {
+      -webkit-box-shadow: 0 0 0 0 #4acdc452;
+    }
+  }
+  @keyframes pulsee {
+    0% {
+      -moz-box-shadow: 0 0 0 0 #4acdc452;
+      box-shadow: 0 0 0 0 #4acdc452;
+    }
+    70% {
+      -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+    }
+    100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+      box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
+  }
+  .home {
+    padding: 5rem;
+  }
+  @media screen and (max-width: 600px) {
+    .home {
+      padding: 2rem;
+    }
+  }
+  .bx-star {
+    color: #ffc107 !important;
+  }
+  .news__time {
+    color: var(--dark-text-color);
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-size: 0.7rem;
+  }
+  .news__source {
+    color: #ff6b6b !important;
+  }
+  .news {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .news__text {
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+  }
+  .ai__icon {
+    margin-right: 0.5rem;
+    color: var(--highlight-color);
+  }
+  .ai__event-summary {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--light-text-color);
+  }
+  .card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  .news__container {
+  }
+  .plan__location-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .plan__location-tag {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--light-text-color);
+  }
+  .plan__location {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--dark-text-color);
+  }
+  .plan__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .plan__danger-button {
+    margin-left: auto;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  .plan__header {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .plan__header-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  .plan__title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+  }
+
+  .plan__objective {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--light-text-color);
+  }
+
+  @media screen and (max-width: 600px) {
+    .resource-list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .pulse-one {
+    position: absolute;
+    top: 180px;
+    left: 150px;
+  }
+
+  .pulse-two {
+    position: absolute;
+    top: 150px;
+    left: 650px;
+  }
+
+  .pulse-three {
+    position: absolute;
+    top: 50px;
+    left: 950px;
   }
 </style>

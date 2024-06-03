@@ -6,6 +6,8 @@
       :title="article.title"
       :subtitle="`Source: ${article.platform}`"
     />
+
+    
     <!-- Display the other fields of the article -->
     <div class="article">
       <span
