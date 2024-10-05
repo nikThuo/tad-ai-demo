@@ -7,6 +7,11 @@ import CounselorPlan from './views/CounselorPlan.vue'
 import ArticlePage from './views/ArticlePage.vue'
 import SideKick from './views/SideKick.vue'
 import ScheduleMe from './views/ScheduleMe.vue'
+import TherapistAvailability from './views/TherapistAvailability.vue'
+import PatientCompletion from '@/views/PatientCompletion.vue'
+import EmergencyAvailability from './views/EmergencyAvailability.vue'
+import ConflictAdjustment from '@/views/ConflictAdjustment.vue'
+import ResourceRecommender from '@/views/ResourceRecommender.vue'
 
 Vue.use(VueRouter)
 
@@ -36,6 +41,31 @@ const routes = [
     path: '/counselor-plan',
     name: 'counselor-plan',
     component: CounselorPlan,
+  },
+  {
+    path: '/therapist-availability',
+    name: 'therapist-availability',
+    component: TherapistAvailability,
+  },
+  {
+    path: '/patient-completion',
+    name: 'patient-completion',
+    component: PatientCompletion,
+  },
+  {
+    path: '/conflict-adjustment',
+    name: 'conflict adjustment',
+    component: ConflictAdjustment,
+  },
+  {
+    path: '/emergency-availability',
+    name: 'emergency-availability',
+    component: EmergencyAvailability,
+  },
+  {
+    path: '/resource-recommender',
+    name: 'resource-recommender',
+    component: ResourceRecommender,
   },
   {
     path: '/article',

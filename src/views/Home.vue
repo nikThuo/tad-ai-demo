@@ -32,6 +32,8 @@
       </div>
     </div>
 
+    <PatientCompletion />
+
     <div class="filters">
       <label for="limit">Limit</label>
       <input class="input" type="number" id="limit" v-model="limit" min="1" />
@@ -108,6 +110,7 @@
 
 <script>
   import TitleSection from '@/components/TitleSection.vue'
+  import PatientCompletion from '@/components/PatientCompletionForm.vue'
 
   export default {
     name: 'Home',
@@ -243,6 +246,7 @@
       }
     },
     components: {
+      PatientCompletion,
       TitleSection,
     },
     methods: {

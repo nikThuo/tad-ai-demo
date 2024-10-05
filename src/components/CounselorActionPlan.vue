@@ -3,9 +3,7 @@
     <div class="counselor-action-plan">
       <div class="action-plan__header">
         <h2 class="action-plan__title">Counselor Action Plan</h2>
-        <span class="action-plan__edit"
-          ><i class="bx bx-message-edit"></i>Edit Response</span
-        >
+        <span class="action-plan__edit"><i class="bx bx-message-edit"></i>Edit Response</span>
       </div>
 
       <p class="action-plan__message">

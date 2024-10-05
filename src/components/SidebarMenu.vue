@@ -181,6 +181,36 @@
             tooltip: 'Counselor Plan',
             icon: 'bx-book-open',
           },
+          {
+            link: '/therapist-availability',
+            name: 'Therapist Availability',
+            tooltip: 'Therapist Availability',
+            icon: 'bx-book-open',
+          },
+          {
+            link: '/patient-completion',
+            name: 'Patient Completion',
+            tooltip: 'Patient Completion',
+            icon: 'bx-book-open',
+          },
+          {
+            link: '/conflict-adjustment',
+            name: 'Conflict Adjustment',
+            tooltip: 'Conflict Adjustment',
+            icon: 'bx-book-open',
+          },
+          {
+            link: '/emergency-availability',
+            name: 'Emergency Availability',
+            tooltip: 'Emergency Availability',
+            icon: 'bx-book-open',
+          },
+          {
+            link: '/resource-recommender',
+            name: 'Resource Recommender',
+            tooltip: 'Resource Recommender',
+            icon: 'bx-book-open',
+          },
         ],
       },
 
@@ -664,13 +694,13 @@
   }
   #my-scroll::-webkit-scrollbar {
     display: none;
-    /* background-color: rgba(255, 255, 255, 0.2); 
+    /* background-color: rgba(255, 255, 255, 0.2);
     width: 10px;
     border-radius:5px  */
   }
   /* #my-scroll::-webkit-scrollbar-thumb{
     background-color: red;
-    border-radius:5px 
+    border-radius:5px
   }
   #my-scroll::-webkit-scrollbar-button:vertical:start:decrement{
     display:none;
