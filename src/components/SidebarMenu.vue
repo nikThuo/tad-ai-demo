@@ -145,7 +145,7 @@
         type: Array,
         default: () => [
           {
-            link: '/',
+            link: '/schedule-me',
             name: 'Schedule Me',
             tooltip: 'Dashboard',
             icon: 'bx-calendar',
@@ -210,6 +210,12 @@
             name: 'Resource Recommender',
             tooltip: 'Resource Recommender',
             icon: 'bx-book-open',
+          },
+          {
+            link: '/',
+            name: 'Log Out',
+            tooltip: 'Dashboard',
+            icon: 'bx-map-pin',
           },
         ],
       },

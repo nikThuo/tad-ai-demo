@@ -1,6 +1,13 @@
 <template>
+<!--  <div>-->
+<!--    <sidebar-menu />-->
+<!--    <router-view />-->
+<!--  </div>-->
   <div>
-    <sidebar-menu />
+    <!-- Conditionally render SidebarMenu if the current route is NOT login -->
+    <sidebar-menu v-if="$route.name !== 'login'" />
+
+    <!-- Main content (router-view) for the active route -->
     <router-view />
   </div>
 </template>

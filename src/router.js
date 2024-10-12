@@ -12,12 +12,18 @@ import PatientCompletion from '@/views/PatientCompletion.vue'
 import EmergencyAvailability from './views/EmergencyAvailability.vue'
 import ConflictAdjustment from '@/views/ConflictAdjustment.vue'
 import ResourceRecommender from '@/views/ResourceRecommender.vue'
+import Login from '@/views/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'login',
+    component: Login,
+  },
+  {
+    path: '/schedule-me',
     name: 'home',
     component: ScheduleMe,
   },
@@ -66,6 +72,11 @@ const routes = [
     path: '/resource-recommender',
     name: 'resource-recommender',
     component: ResourceRecommender,
+  },
+  {
+      path: '/',
+      name: 'log-out',
+      component: Login,
   },
   {
     path: '/article',
