@@ -13,6 +13,7 @@ import EmergencyAvailability from './views/EmergencyAvailability.vue'
 import ConflictAdjustment from '@/views/ConflictAdjustment.vue'
 import ResourceRecommender from '@/views/ResourceRecommender.vue'
 import Login from '@/views/Login.vue'
+import NotesTranscriber from '@/views/NotesTranscriber.vue'
 
 Vue.use(VueRouter)
 
@@ -72,6 +73,11 @@ const routes = [
     path: '/resource-recommender',
     name: 'resource-recommender',
     component: ResourceRecommender,
+  },
+  {
+    path: '/notes-transcriber',
+    name: 'notes-transcriber',
+    component: NotesTranscriber,
   },
   {
       path: '/',

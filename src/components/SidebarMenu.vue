@@ -212,6 +212,12 @@
             icon: 'bx-book-open',
           },
           {
+            link: '/notes-transcriber',
+            name: 'Notes Transcriber',
+            tooltip: 'Resource Recommender',
+            icon: 'bx-book-open',
+          },
+          {
             link: '/',
             name: 'Log Out',
             tooltip: 'Dashboard',
