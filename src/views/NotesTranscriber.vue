@@ -152,7 +152,7 @@ export default {
         this.recorder = new MediaRecorder(stream)
 
         const chunks = []
-        this.recorder.ondataavailable = (event) => {
+        this.recorder.ondataavailable = event => {
           if (event.data.size > 0) chunks.push(event.data)
         }
 
